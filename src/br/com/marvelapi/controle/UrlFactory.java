@@ -11,6 +11,7 @@ import java.util.Date;
 public class UrlFactory {
 
 
+	//Insira aqui suas chaves fornecidas pela Marvel.
 	private static final String privateKey = "";
 	private static final String apikey = "";
 	

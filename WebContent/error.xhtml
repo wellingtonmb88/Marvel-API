@@ -13,17 +13,36 @@
 	<div style="text-align: center">
 		<h:form>
 			<h:outputLabel value="Comic-ID: " for="comicID" />
-			<h:inputText value="#{comicBean.comic.comicID}" id="comicID" />
+			<h:inputText value="#{comicBean.comic.comicID}" id="comicID"
+			 size="20" required="true"  
+			 requiredMessage="Insira um valor de 1 a 5 digitos!" 
+			 validatorMessage="Insira um valor de 1 a 5 digitos!">
+				<f:validateLength minimum="1" maximum="5"/>
+			</h:inputText>
+			
 			<h:commandButton action="#{comicBean.buscarPorID()}" value="Buscar" />
+			<br />
+			<h:message for="comicID" style="color:red"  />
 		</h:form>
-		
 		<br />
 		<h:outputLabel value="- Buscar Comics por Ano -" />
 		<h:form>
-			<h:outputLabel value="Ano-Inicial: " for="ano_inicio" /> 
-			<h:inputText value="#{comicBean.ano_inicio}" id="ano_inicio" />
+			<h:outputLabel value="Ano-Inicial: " for="ano_inicio" />
+			<h:inputText value="#{comicBean.ano_inicio}" id="ano_inicio"
+			 required="true"  
+			 requiredMessage="Insira um ano válido para data inicial! " 
+			 validatorMessage="Insira um ano válido para data inicial! " >
+				<f:validateLength minimum="4" maximum="4"/>
+			</h:inputText>
+			
 			<h:outputLabel value="Ano-Final: " for="ano_fim" />
-			<h:inputText value="#{comicBean.ano_fim}" id="ano_fim" />
+			<h:inputText value="#{comicBean.ano_fim}" id="ano_fim"
+			 required="true"  
+			 requiredMessage="Insira um ano válido para data final!" 
+			 validatorMessage="Insira um ano válido para data final!" >
+				<f:validateLength minimum="4" maximum="4"/>
+			</h:inputText>
+			
 			<h:selectOneMenu value="#{comicBean.numberOfComics}">
 				<f:selectItem itemLabel="5" itemValue="5" />
 				<f:selectItem itemLabel="10" itemValue="10" />
@@ -32,6 +51,8 @@
 				<f:selectItem itemLabel="30" itemValue="30" />
 			</h:selectOneMenu>
 			<h:commandButton action="#{comicBean.buscarPorData()}" value="Buscar" />
+			<br />
+			<h:message for="ano_inicio" style="color:red"  /><h:message for="ano_fim" style="color:red"  />
 		</h:form>
 	</div>
 	 

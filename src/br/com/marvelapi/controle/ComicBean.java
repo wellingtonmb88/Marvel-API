@@ -5,20 +5,11 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
-import java.net.URL;
-import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
-import javax.servlet.http.HttpSession;
-
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
 
 import br.com.marvelapi.model.Comic;
 
@@ -29,12 +20,13 @@ public class ComicBean {
 	// Variaveis privadas
 	private HttpURLConnection conn = null;
 
+	
 	private String ano_inicio;
 
 	private String ano_fim;
 
 	private String numberOfComics;
-
+ 
 	private Comic comic = new Comic();
 
 	private List<Comic> comics = new ArrayList<Comic>();
