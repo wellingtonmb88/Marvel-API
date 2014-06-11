@@ -1,0 +1,60 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html">
+<h:head>
+	<title>Marvel API</title>
+</h:head>
+<h:body style="color: white; background-color: black;">
+ 
+	<h:graphicImage value="images/marvel_logo.png" />
+
+	<div style="text-align: center">
+
+		<h:form>
+			<h:outputLabel value="Comic-ID: " for="comicID" />
+			<h:inputText value="#{comicBean.comic.comicID}" id="comicID" />
+			<h:commandButton action="#{comicBean.buscarPorID()}" value="Buscar" />
+		</h:form>
+		<br />
+		<h:outputLabel value="- Buscar Comics por Ano -" />
+		<h:form>
+			<h:outputLabel value="Ano-Inicial: " for="ano_inicio" />
+			<h:inputText value="#{comicBean.ano_inicio}" id="ano_inicio" />
+			<h:outputLabel value="Ano-Final: " for="ano_fim" />
+			<h:inputText value="#{comicBean.ano_fim}" id="ano_fim" />
+			<h:selectOneMenu value="#{comicBean.numberOfComics}">
+				<f:selectItem itemLabel="5" itemValue="5" />
+				<f:selectItem itemLabel="10" itemValue="10" />
+				<f:selectItem itemLabel="15" itemValue="15" />
+				<f:selectItem itemLabel="20" itemValue="20" />
+				<f:selectItem itemLabel="30" itemValue="30" />
+			</h:selectOneMenu>
+			<h:commandButton action="#{comicBean.buscarPorData()}" value="Buscar" />
+		</h:form>
+	</div>
+ 
+	<hr />
+
+	<div
+		style="overflow: auto; height: 350px; width: auto; text-align: center">
+		<ul style="list-style: none;  ">
+			<ui:repeat var="comicVar" value="#{comicBean.comics}">
+				<li>#{comicVar.comicTitle}<br /> <h:graphicImage
+						value="#{comicVar.comicImage}" /> 
+					<br /> #{comicVar.comicDescription}<br />
+				</li>
+				
+				<br />
+			</ui:repeat>
+			<h:graphicImage
+						value="images/semImagem.png" rendered="#{empty comicBean.comics}" />
+		</ul>
+	</div>
+	<hr />
+	<div id="footer" style="text-align: right;">
+		<h:outputLabel value="Data provided by Marvel. © 2014 Marvel" />
+	</div>
+</h:body>
+</html>
